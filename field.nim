@@ -16,6 +16,10 @@ proc newField*(w, h: int): Field =
         grid[i] = newSeq[int](w)
     Field(w: w, h: h, cells: grid, lastAdded: InvalidCoord)
 
+iterator items*(self: Field): seq[int] =
+    for y in 0..<self.h:
+        yield self.cells[y]
+
 iterator pairs*(self: Field): tuple[y: int, row: seq[int]] =
     for y in 0..<self.h:
         yield (y, self.cells[y])

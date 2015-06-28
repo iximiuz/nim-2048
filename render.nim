@@ -62,5 +62,6 @@ proc renderField*(field: Field) =
 
 proc render*(game: Game) =
     echo "\27c"  # clear screen
+    echo "Score: " & game.score.intToStr & (if game.isWon(): " [Victory!]" else: "")
     renderField(game.field)
     

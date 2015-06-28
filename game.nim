@@ -50,6 +50,7 @@ method move(self: Game, direction: char) =
             var cf = self.cellCoords(x + offset, rowNo, rotated)
             if 0 == self.field[ct] or self.field[ct] == self.field[cf]:
                 self.field[ct] = self.field[ct] + self.field[cf]
+                self.score += self.field[ct]
                 self.field[cf] = 0
                 x += offset
                 merged = true
@@ -86,6 +87,13 @@ method down*(self: Game) =
 method restart*(self: Game, nStartTiles: int = 2) =
     self.reset()
     self.addStartTiles(nStartTiles)
+
+method isWon*(self: Game): bool =
+    for row in self.field:
+        for c in row:
+            if c >= 16:
+                return true
+    result = false
 
 proc newGame*(w: int = 4, h: int = 4, nStartTiles: int = 2): Game =
     result = Game(field: newField(w, h), score: 0)
