@@ -1,7 +1,7 @@
 import strutils
 import field, game
 
-proc renderField*(field: Field) =
+proc renderField(field: Field) =
     proc pickColor(v: int, isLastAdded: bool): string =
         if isLastAdded:
             result = "\27[7;1;34m" # blue

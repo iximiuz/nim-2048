@@ -91,7 +91,7 @@ method restart*(self: Game, nStartTiles: int = 2) =
 method isWon*(self: Game): bool =
     for row in self.field:
         for c in row:
-            if c >= 16:
+            if c >= 2048:
                 return true
     result = false
 
