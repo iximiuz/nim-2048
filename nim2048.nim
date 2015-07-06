@@ -24,5 +24,5 @@ while true:
     of cmdDown:
         g.down()
     of cmdExit:
-       echo "Good buy!"
+       echo "Good bye!"
        break       
