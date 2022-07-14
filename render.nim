@@ -8,7 +8,7 @@ proc renderField(field: Field) =
         else:
             result = case v:
             of 0:
-                ""          # default
+                "" # default
             of 2..16:
                 "\27[7;1;37m" # gray
             of 32..256:
@@ -17,7 +17,7 @@ proc renderField(field: Field) =
                 "\27[7;1;33m" # yellow
             else:
                 "\27[7;1;31m" # red
-            
+
     proc pickValue(v: int): string =
         var vstr = v.intToStr
         result = case v:
@@ -30,12 +30,12 @@ proc renderField(field: Field) =
         of 128..512:
             "  " & vstr & "   "
         else:
-            "  " & vstr & "  "         
+            "  " & vstr & "  "
 
     proc drawRow(row: seq[int], y: int, lastAdded: Coords) =
-        type 
+        type
             Lines = array[3, string]
-            
+
         var lines: Lines
         var counter = 0
         for x, v in row:
@@ -61,7 +61,6 @@ proc renderField(field: Field) =
     echo " " & "¯¯¯¯¯¯¯¯¯".repeat(field.w)[0 .. ^3] & " "
 
 proc render*(game: Game) =
-    echo "\27c"  # clear screen
+    echo "\27c" # clear screen
     echo "Score: " & game.score.intToStr & (if game.isWon(): " [Victory!]" else: "")
     renderField(game.field)
-    

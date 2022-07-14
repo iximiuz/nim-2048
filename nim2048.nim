@@ -1,5 +1,5 @@
 import os, strutils, net
-import field, render, game, input
+import render, game, input
 
 
 const DefaultPort = 12321
@@ -11,7 +11,7 @@ var g = newGame()
 
 while true:
     render(g)
-    var command = inputProcessor.read()    
+    var command = inputProcessor.read()
     case command:
     of cmdRestart:
         g.restart()
@@ -24,5 +24,5 @@ while true:
     of cmdDown:
         g.down()
     of cmdExit:
-       echo "Good bye!"
-       break       
+        echo "Good bye!"
+        break
